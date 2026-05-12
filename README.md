@@ -176,8 +176,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-<p align="center">
-  Developed by <a href="https://github.com/LaasriMahmoud">Mahmoud Laasri</a>
-  <br>
-  <i>Empowering auditors with intelligence.</i>
-</p>
