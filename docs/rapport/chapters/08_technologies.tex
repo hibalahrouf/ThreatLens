@@ -1,0 +1,62 @@
+%% ============================================================
+%%  CHAPITRE 4 : TECHNOLOGIES UTILISÉES
+%% ============================================================
+\chapter{Technologies et Outils de Développement}
+\label{chap:technologies}
+
+La réalisation de ce projet s'appuie sur une stack technologique moderne, performante et adaptée au développement de plateformes d'analyse de sécurité lourdes. Ce chapitre présente les principaux choix technologiques.
+
+\section{Backend et API : FastAPI (Python)}
+\textbf{FastAPI} a été choisi comme framework de développement pour l'API RESTful. Basé sur Python 3.8+, il est l'un des frameworks web les plus rapides disponibles, grâce à son architecture asynchrone construite sur Starlette et Pydantic.
+
+\begin{tcolorbox}[infobox, title={Pourquoi FastAPI ?}]
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faCheckCircle}]
+    \item \textbf{Performances exceptionnelles :} Capable de gérer des milliers de requêtes concurrentes, crucial pour orchestrer les différents moteurs de scan.
+    \item \textbf{Validation automatique :} Pydantic assure la validation stricte des données entrantes et sortantes (ex: validation des schémas JSON de l'IA).
+    \item \textbf{Documentation intégrée :} Génération automatique de la documentation Swagger UI et ReDoc via OpenAPI.
+\end{itemize}
+\end{tcolorbox}
+
+\section{Orchestration Asynchrone : Celery \& Redis}
+L'audit de sécurité d'un fichier binaire de 100 Mo peut prendre de quelques minutes à plus d'une heure. Il est donc impossible de bloquer la requête HTTP de l'utilisateur pendant ce temps.
+
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faCogs}]
+    \item \textbf{Celery :} Un gestionnaire de file d'attente distribué. Il permet d'extraire les tâches lourdes de l'API principale et de les exécuter en arrière-plan via des \textit{workers} dédiés.
+    \item \textbf{Redis :} Utilisé comme \textit{Message Broker} (courtier de messages) pour la communication entre FastAPI et Celery. Redis stocke les tâches en attente et permet aux \textit{workers} de les récupérer. Il sert également de backend de résultats pour stocker le statut d'avancement des tâches (progress tracking).
+\end{itemize}
+
+\section{Moteurs d'Analyse de Sécurité}
+
+\subsection{MobSF (Mobile Security Framework)}
+MobSF est un outil open-source tout-en-un pour les tests de pénétration et l'évaluation de la sécurité des applications mobiles. Dans notre architecture, il est déployé dans un conteneur Docker isolé et interagit avec notre backend via son API REST. Il est responsable de la décompilation, de l'extraction des manifestes et de l'analyse SAST primaire.
+
+\subsection{Intelligence Artificielle Locale : Ollama}
+\textbf{Ollama} est un outil léger et open-source permettant d'exécuter des modèles de langage de grande taille (LLMs) localement.
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faBrain}]
+    \item \textbf{Modèle utilisé : Llama 3 (Meta).} Un modèle puissant avec des capacités de raisonnement avancées, particulièrement adapté à l'analyse de code source.
+    \item \textbf{Avantage critique :} Contrairement aux API cloud (ChatGPT), l'utilisation d'Ollama garantit que le code source décompilé de l'application cible ne quitte jamais l'infrastructure de l'auditeur. C'est une condition indispensable pour respecter les normes de confidentialité (RGPD) lors d'un audit de sécurité.
+\end{itemize}
+
+\section{Frontend et Interface Utilisateur : Next.js 15}
+Le frontend de la plateforme est développé avec \textbf{Next.js 15}, un framework React de production. L'interface a été conçue pour offrir une expérience utilisateur (UX) de qualité supérieure, essentielle pour la visualisation de données de sécurité complexes.
+
+\begin{tcolorbox}[infobox, title={Stack Frontend}]
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faDesktop}]
+    \item \textbf{Tailwind CSS :} Pour le stylage \textit{utility-first}. Nous avons implémenté un système de design personnalisé ("Glassmorphism", palette de couleurs froides cyan/teal, animations subtiles).
+    \item \textbf{Recharts :} Bibliothèque de visualisation de données pour générer des graphiques en radar, permettant de visualiser instantanément le score de maturité MASVS de l'application.
+    \item \textbf{Lucide React :} Bibliothèque d'icônes vectorielles légères et personnalisables.
+\end{itemize}
+\end{tcolorbox}
+
+\section{Infrastructure et Conteneurisation : Docker}
+L'ensemble de l'architecture est conteneurisé grâce à \textbf{Docker} et orchestré via \textbf{Docker Compose}. Cela permet un déploiement reproductible et isolé sur n'importe quel système d'exploitation. Le fichier \code{docker-compose.yml} définit les services suivants :
+\begin{itemize}
+    \item \code{api} (FastAPI)
+    \item \code{worker} (Celery)
+    \item \code{db} (PostgreSQL)
+    \item \code{redis} (Message Broker)
+    \item \code{minio} (Stockage S3)
+    \item \code{mobsf} (Moteur SAST)
+\end{itemize}
+
+\cleardoublepage

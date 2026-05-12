@@ -1,0 +1,53 @@
+%% ============================================================
+%%  CHAPITRE 2 : ÉTAT DE L'ART
+%% ============================================================
+\chapter{État de l'Art et Contexte Théorique}
+\label{chap:etat_art}
+
+\section{Sécurité des Applications Mobiles}
+Les applications mobiles diffèrent fondamentalement des applications web traditionnelles. Elles s'exécutent dans des environnements contrôlés (sandboxing) mais sont exposées à des menaces physiques et logiques spécifiques. Le code source est expédié sur l'appareil de l'utilisateur, ce qui facilite le \textit{reverse engineering} (décompilation) et l'extraction de secrets matériels codés en dur.
+
+Les principales catégories de vulnérabilités mobiles incluent :
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faShieldAlt}]
+    \item \textbf{Stockage de données non sécurisé :} Sauvegarde de données sensibles (mots de passe, tokens) en clair dans les bases de données SQLite, SharedPreferences ou sur le stockage externe.
+    \item \textbf{Communications non sécurisées :} Absence de validation des certificats SSL/TLS, permettant des attaques de l'homme du milieu (MitM).
+    \item \textbf{Cryptographie faible :} Utilisation d'algorithmes obsolètes (MD5, SHA1) ou de générateurs de nombres pseudo-aléatoires prévisibles.
+    \item \textbf{Authentification et autorisation défaillantes :} Mécanismes de session mal implémentés ou absence de vérification côté serveur.
+\end{itemize}
+
+\section{Le Standard OWASP MASVS v2}
+L'\textbf{OWASP Mobile Application Security Verification Standard (MASVS)} est la norme de facto pour l'évaluation de la sécurité des applications mobiles. En 2023, la version 2 a été publiée, restructurant profondément les catégories pour s'aligner sur les architectures mobiles modernes.
+
+\begin{tcolorbox}[infobox, title={Les 7 Catégories du MASVS v2}]
+\begin{enumerate}
+    \item \masvs{MASVS-STORAGE} : Sécurité du stockage local des données.
+    \item \masvs{MASVS-CRYPTO} : Utilisation correcte de la cryptographie.
+    \item \masvs{MASVS-AUTH} : Mécanismes d'authentification et d'autorisation.
+    \item \masvs{MASVS-NETWORK} : Sécurité des communications réseau.
+    \item \masvs{MASVS-PLATFORM} : Interaction sécurisée avec l'OS mobile et ses IPC.
+    \item \masvs{MASVS-CODE} : Qualité du code et gestion des dépendances (SBOM).
+    \item \masvs{MASVS-RESILIENCE} : Protection contre le reverse engineering et la falsification (tampering).
+\end{enumerate}
+\end{tcolorbox}
+
+\section{Analyse Statique (SAST) et Outils Existants}
+L'Analyse Statique (SAST) consiste à inspecter le code source, le bytecode ou les binaires d'une application sans l'exécuter. Pour Android, cela implique la décompilation des fichiers APK en code Smali ou en Java décompilé.
+
+Parmi les outils existants, \textbf{MobSF (Mobile Security Framework)} se distingue comme un leader open-source. MobSF automatise l'analyse SAST et DAST (Dynamic Application Security Testing) pour Android et iOS. Bien que puissant, MobSF présente des limites :
+\begin{itemize}[label=\textcolor{SeverityCrit}{\faTimes}]
+    \item \textbf{Faux Positifs :} Il signale souvent des vulnérabilités potentielles qui ne sont pas exploitables dans le contexte réel de l'application.
+    \item \textbf{Alignement MASVS obsolète :} MobSF s'aligne principalement sur les anciennes versions du MASVS (v1) et du top 10 mobile de 2016.
+\end{itemize}
+
+\section{Intégration de l'IA et LLMs en Cybersécurité}
+L'émergence des \textit{Large Language Models} (LLMs) offre de nouvelles perspectives pour l'analyse de code. Les LLMs peuvent "comprendre" le contexte d'un fragment de code et déterminer si une faille signalée par un outil SAST est réellement exploitable (vrai positif) ou s'il s'agit d'une erreur de l'outil (faux positif).
+
+Cependant, l'utilisation d'API cloud (comme OpenAI ou Anthropic) pour l'audit de code soulève de graves problèmes de confidentialité (fuite de code source ou de propriété intellectuelle). C'est pourquoi des solutions locales comme \textbf{Ollama}, permettant de faire tourner des modèles ouverts (Llama 3, Mistral) directement sur la machine de l'auditeur, sont devenues indispensables pour les audits sécurisés.
+
+\section{Synthèse et Positionnement}
+Notre plateforme, \textbf{MASVS Audit Copilot}, se positionne à l'intersection de ces technologies. Elle utilise MobSF comme moteur de base pour l'extraction des données, mais le surpasse en implémentant :
+1. Une traduction et un mapping stricts vers le nouveau standard \textbf{MASVS v2}.
+2. Une analyse de composition logicielle (SCA) via \textbf{OSV.dev}.
+3. Un pipeline de triage IA \textbf{local} et \textbf{privé} (Ollama) pour éliminer les faux positifs et générer des correctifs sur mesure, réduisant ainsi drastiquement le temps d'analyse manuel.
+
+\cleardoublepage

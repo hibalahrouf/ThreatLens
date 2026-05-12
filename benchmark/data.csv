@@ -1,0 +1,5 @@
+app_name,version,category,size_mb,source_url,sha256,notes
+DivaApplication,1.0,Vulnerable,1.43,https://github.com/payatu/diva-android,5CEFC51FCE9BD760B92AB2340477F4DDA84B4AE0C5D04A8C9493E4FE34FAB7C5,Used for testing automated Android app security analyzers
+InsecureBankv2,1.0,Vulnerable,3.30,https://github.com/dineshshetty/Android-InsecureBankv2,B18AF2A0E44D7634BBCDF93664D9C78A2695E050393FCFBB5E8B91F902D194A4,Intentionally vulnerable Android application
+UnCrackable-Level1,1.0,CTF,0.06,https://github.com/OWASP/owasp-mastg,1DA8BF57D266109F9A07C01BF7111A1975CE01F190B9D914BCD3AE3DBEF96F21,OWASP MASTG Crackme Level 1
+UnCrackable-Level3,1.0,CTF,1.39,https://github.com/OWASP/owasp-mastg,6827F776B7D2844342711BE6F13695AE8D1A5F209FC0072DBAF8B85E2FCFF4B7,OWASP MASTG Crackme Level 3

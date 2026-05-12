@@ -1,0 +1,62 @@
+%% ============================================================
+%%  CHAPITRE 3 : CONCEPTION ET ARCHITECTURE
+%% ============================================================
+\chapter{Conception et Architecture du Système}
+\label{chap:conception}
+
+\section{Architecture Globale}
+L'architecture de \textbf{MASVS Audit Copilot} a été pensée pour être modulaire, scalable et asynchrone, compte tenu de la lourdeur des tâches d'analyse statique et de traitement par l'IA. Elle repose sur une architecture orientée microservices orchestrée par Docker.
+
+Le système est divisé en quatre grandes couches :
+\begin{enumerate}[label=\textbf{\textcolor{AccentCyan}{\arabic*.}}]
+    \item \textbf{Couche de Présentation (Frontend) :} Une application web interactive développée en Next.js.
+    \item \textbf{Couche Logique (Backend / API) :} Une API RESTful développée avec FastAPI qui sert de chef d'orchestre.
+    \item \textbf{Couche d'Exécution Asynchrone (Workers) :} Des \textit{workers} Celery qui exécutent les analyses lourdes en arrière-plan.
+    \item \textbf{Couche de Persistance et Moteurs externes :} Base de données PostgreSQL, cache Redis, MinIO (pour le stockage des fichiers), MobSF (moteur SAST) et Ollama (moteur LLM).
+\end{enumerate}
+
+\section{Modélisation de la Base de Données}
+Le modèle de données relationnel, géré par SQLAlchemy, est structuré autour des entités principales du domaine de l'audit de sécurité.
+
+\begin{tcolorbox}[codebox, title={Entités Principales du Modèle de Données}]
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faDatabase}]
+    \item \textbf{User :} Gère l'authentification et les autorisations des auditeurs.
+    \item \textbf{Project :} Regroupe plusieurs scans pour une même application mobile (permet de suivre l'évolution de la sécurité au fil des versions).
+    \item \textbf{Scan :} Représente une exécution d'audit unique. Contient les métadonnées (nom du fichier, date, score de maturité, statut Celery).
+    \item \textbf{Finding :} Représente une vulnérabilité identifiée lors d'un scan. Chaque \textit{Finding} contient :
+    \begin{itemize}
+        \item Le titre, la description et la sévérité initiale (trouvée par MobSF).
+        \item Le mapping vers la catégorie \masvs{MASVS v2} (ex: MASVS-STORAGE).
+        \item Le score \textbf{CVSS v3.1} calculé.
+        \item Les résultats de l'\textbf{AI Triage} (Vrai/Faux positif, justification, code de remédiation).
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\section{Le Pipeline d'Analyse (Workflow)}
+Le cœur du système réside dans son pipeline d'analyse asynchrone, déclenché dès qu'un utilisateur téléverse un fichier binaire (APK ou IPA). Le workflow est divisé en 5 étapes séquentielles :
+
+\subsection{Étape 1 : Initialisation et Stockage}
+Le binaire est reçu par l'API FastAPI, un enregistrement \code{Scan} est créé en base de données avec le statut \textit{pending}, et le fichier est téléversé de manière sécurisée vers le stockage objet \textbf{MinIO}.
+
+\subsection{Étape 2 : Analyse Statique (MobSF)}
+Le \textit{worker} Celery récupère le binaire depuis MinIO et l'envoie à l'API REST du conteneur \textbf{MobSF}. MobSF décompile l'application, analyse le manifeste (AndroidManifest.xml), parcourt le code source (Java/Smali/Swift) et génère un rapport JSON brut contenant des centaines de vulnérabilités potentielles.
+
+\subsection{Étape 3 : Mapping MASVS v2 et Scoring CVSS}
+Le rapport brut de MobSF est intercepté par le module de mapping. Ce module applique des algorithmes d'expression régulière (Regex) et d'analyse lexicale pour mapper chaque faille de l'ancien format vers les 7 nouvelles catégories du \textbf{MASVS v2}. Simultanément, un score \textbf{CVSS v3.1} est généré de manière programmatique en évaluant le vecteur d'attaque, la complexité et l'impact (Confidentialité, Intégrité, Disponibilité).
+
+\subsection{Étape 4 : SBOM et Analyse OSV.dev}
+En parallèle, les dépendances de l'application sont extraites pour constituer une Nomenclature Logicielle (SBOM). Le système interroge l'API de base de données de vulnérabilités \textbf{OSV.dev} de Google pour identifier si les bibliothèques tierces (ex: Retrofit, OkHttp) contiennent des CVE connues (Common Vulnerabilities and Exposures).
+
+\subsection{Étape 5 : Triage par l'Intelligence Artificielle (Ollama)}
+C'est la phase la plus innovante. Pour chaque faille de sévérité élevée ou critique, le \textit{worker} génère un \textit{prompt} complexe contenant :
+1. La description de la vulnérabilité.
+2. Le fragment de code source vulnérable extrait par MobSF.
+3. Les exigences de la catégorie MASVS concernée.
+
+Ce prompt est envoyé à l'instance locale \textbf{Ollama} exécutant le modèle \textbf{Llama 3}. L'IA analyse le contexte et renvoie un JSON structuré indiquant si la faille est un \textit{vrai positif} ou un \textit{faux positif}, accompagné d'une justification technique et, le cas échéant, d'un correctif de code sécurisé.
+
+\section{Diagramme de Séquence}
+Le processus décrit ci-dessus est entièrement asynchrone. L'interface utilisateur communique avec l'API via \textbf{WebSockets} pour recevoir des mises à jour en temps réel sur la progression du pipeline d'analyse (de 0\% à 100\%), offrant une expérience utilisateur fluide et réactive sans bloquer le thread principal.
+
+\cleardoublepage

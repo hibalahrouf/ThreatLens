@@ -1,0 +1,134 @@
+%% ============================================================
+%%  PAGE DE GARDE — MASVS Audit Copilot
+%% ============================================================
+\begin{titlepage}
+
+%% ── Fond sombre pleine page ──
+\begin{tikzpicture}[remember picture, overlay]
+  %% Fond principal
+  \fill[DarkNavy] (current page.south west) rectangle (current page.north east);
+
+  %% Grille décorative subtile
+  \foreach \x in {0,1,...,30} {
+    \draw[PrimaryBlue!8, line width=0.3pt] (\x*0.7cm, 0) -- (\x*0.7cm, 29.7cm);
+  }
+  \foreach \y in {0,1,...,42} {
+    \draw[PrimaryBlue!8, line width=0.3pt] (0, \y*0.7cm) -- (21cm, \y*0.7cm);
+  }
+
+  %% Glow en haut à gauche
+  \shade[inner color=AccentCyan!25, outer color=DarkNavy, opacity=0.6]
+    (2cm, 26cm) circle (5cm);
+
+  %% Glow en bas à droite
+  \shade[inner color=PrimaryBlue!30, outer color=DarkNavy, opacity=0.5]
+    (19cm, 4cm) circle (6cm);
+
+  %% Bande cyan en haut
+  \fill[PrimaryBlue]
+    (current page.north west) rectangle ++(21cm, -0.5cm);
+
+  %% Bande fine accent gauche
+  \fill[AccentCyan]
+    (current page.north west) ++(0, -0.5cm) rectangle ++(0.5cm, -28.7cm);
+
+  %% Bande fine bas
+  \fill[PrimaryBlue]
+    (current page.south west) rectangle ++(21cm, 0.4cm);
+
+  %% Logo / Icône centrale shield
+  \node[anchor=center] at ($(current page.center)+(0, 4cm)$) {
+    \begin{tikzpicture}
+      \fill[PrimaryBlue!80, rounded corners=12pt] (-1.4cm, -1.6cm) rectangle (1.4cm, 1.6cm);
+      \fill[AccentCyan!30] (-1.1cm, -0.4cm) arc (-180:0:1.1cm) -- cycle;
+      \draw[white, line width=3pt] (-0.7cm, 0.4cm) -- (0cm, -0.4cm) -- (0.9cm, 0.7cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+%% ── Contenu ──
+\vspace*{1.2cm}
+
+%% Établissement
+\begin{center}
+  {\color{AccentCyan}\faUniversity}\quad
+  {\color{white}\large\bfseries ÉCOLE NATIONALE DE SCIENCES APPLIQUÉES}\\[2pt]
+  {\color{AccentCyan!70}\small Département Informatique \& Systèmes d'Information}
+\end{center}
+
+\vspace{1cm}
+
+%% Titre principal
+\begin{center}
+  {\color{SlateGray!50}\small\bfseries\MakeUppercase{Rapport de Projet de Fin d'Études}}\\[10pt]
+  \begin{tcolorbox}[
+    enhanced, width=15cm, center,
+    colback=DarkNavy, colframe=AccentCyan,
+    arc=10pt, boxrule=1.2pt,
+    left=12pt, right=12pt, top=10pt, bottom=10pt,
+  ]
+    \centering
+    {\color{AccentCyan}\huge\bfseries MASVS Audit Copilot}\\[8pt]
+    {\color{white!80}\large Plateforme Automatisée d'Audit de}\\
+    {\color{white!80}\large Sécurité des Applications Mobiles}\\[6pt]
+    {\color{AccentCyan!60}\normalsize basée sur OWASP MASVS v2 et l'Intelligence Artificielle Locale}
+  \end{tcolorbox}
+\end{center}
+
+\vspace{0.8cm}
+
+%% Tags technologiques
+\begin{center}
+  \foreach \tag/\col in {
+    FastAPI/PrimaryBlue,
+    Next.js/AccentCyan,
+    Docker/PrimaryBlue!80,
+    Ollama\ AI/AccentCyan!80,
+    OWASP\ MASVS\ v2/PrimaryBlue,
+    MobSF/AccentCyan!70,
+    PostgreSQL/PrimaryBlue!70,
+    CVSS\ v3.1/AccentCyan!60
+  }{
+    \tcbox[on line, colback=\col!15, colframe=\col!50,
+           arc=5pt, boxrule=0.5pt, boxsep=2pt, left=5pt, right=5pt,
+           fontupper=\color{white}\scriptsize\bfseries]{\ \tag\ }%
+    \hspace{3pt}
+  }
+\end{center}
+
+\vspace{1.2cm}
+
+%% Membres
+\begin{center}
+  \begin{tcolorbox}[
+    enhanced, width=14cm, center,
+    colback=PrimaryBlue!10, colframe=PrimaryBlue!40,
+    arc=8pt, boxrule=0.7pt,
+    sidebyside, sidebyside align=top,
+    lefthand width=6.5cm,
+  ]
+    %% Réalisation
+    {\color{AccentCyan}\small\bfseries\faUserEdit\quad RÉALISATION}\\[6pt]
+    {\color{white}\bfseries Laasri Mahmoud}\\
+    {\color{white}\bfseries Lahrouf Hiba}
+    \tcblower
+    %% Encadrant
+    {\color{AccentCyan}\small\bfseries\faChalkboardTeacher\quad ENCADRANT}\\[6pt]
+    {\color{white}\bfseries M. Mohamed Lachgar}\\
+    {\color{SlateGray!60}\small Professeur Assistant}
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+
+%% Année académique
+\begin{center}
+  {\color{SlateGray!60}\small Année Académique}\\[2pt]
+  {\color{white}\bfseries 2024 -- 2025}
+\end{center}
+
+\vspace{0.6cm}
+
+\end{titlepage}
+
+\cleardoublepage

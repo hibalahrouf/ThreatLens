@@ -1,0 +1,101 @@
+name: MASVS Security Scan
+description: Run MASVS/MASTG security audit on a mobile application
+
+on:
+  pull_request:
+    paths:
+      - "app/**"
+      - "*.apk"
+      - "*.ipa"
+  workflow_dispatch:
+    inputs:
+      app_path:
+        description: "Path to APK/IPA file"
+        required: true
+        default: "app/build/outputs/apk/release/app-release.apk"
+      fail_on:
+        description: "Fail threshold (critical|high|medium)"
+        required: false
+        default: "critical"
+
+env:
+  MASVS_SERVER_URL: ${{ secrets.MASVS_SERVER_URL }}
+  MASVS_API_TOKEN: ${{ secrets.MASVS_API_TOKEN }}
+
+jobs:
+  security-scan:
+    name: 🛡️ MASVS Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 📦 Install MASVS CLI
+        run: pip install -e ./cli
+
+      - name: 🔐 Configure CLI
+        run: |
+          masvs auth login --token "$MASVS_API_TOKEN"
+          masvs auth profile --url "$MASVS_SERVER_URL"
+
+      - name: 📱 Run Security Scan
+        id: scan
+        run: |
+          APP_PATH="${{ github.event.inputs.app_path || 'app/build/outputs/apk/release/app-release.apk' }}"
+          FAIL_ON="${{ github.event.inputs.fail_on || 'critical' }}"
+
+          masvs scan run "$APP_PATH" \
+            --project "${{ github.repository }}" \
+            --version "${{ github.sha }}" \
+            --output sarif \
+            --fail-on "$FAIL_ON"
+
+      - name: 📤 Upload SARIF to GitHub Security
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: "audit_report_*.sarif"
+          category: "masvs-audit"
+
+      - name: 💬 Comment on PR
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const files = fs.readdirSync('.').filter(f => f.endsWith('.sarif'));
+            
+            let comment = '## 🛡️ MASVS Security Audit Results\n\n';
+            
+            if (files.length > 0) {
+              const sarif = JSON.parse(fs.readFileSync(files[0], 'utf8'));
+              const results = sarif.runs[0].results || [];
+              const score = sarif.runs[0].tool.driver.properties?.scanScore;
+              const grade = sarif.runs[0].tool.driver.properties?.scanGrade;
+              
+              comment += `**Score:** ${score || 'N/A'}/100 (${grade || '?'})\n`;
+              comment += `**Findings:** ${results.length}\n\n`;
+              
+              const errors = results.filter(r => r.level === 'error').length;
+              const warnings = results.filter(r => r.level === 'warning').length;
+              
+              comment += `| Level | Count |\n|-------|-------|\n`;
+              comment += `| 🔴 Error | ${errors} |\n`;
+              comment += `| 🟡 Warning | ${warnings} |\n`;
+              comment += `| Total | ${results.length} |\n`;
+            } else {
+              comment += '_No SARIF report found._\n';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment,
+            });

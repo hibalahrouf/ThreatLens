@@ -1,0 +1,246 @@
+{
+  "hardcoded_secret": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "hardcoded_password": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "hardcoded_key": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "hardcoded_api_key": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "shared_preferences": [
+    "MASVS-STORAGE-1",
+    "medium"
+  ],
+  "external_storage": [
+    "MASVS-STORAGE-1",
+    "medium"
+  ],
+  "sqlite_database": [
+    "MASVS-STORAGE-1",
+    "medium"
+  ],
+  "database_encryption": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "logging": [
+    "MASVS-STORAGE-2",
+    "low"
+  ],
+  "clipboard": [
+    "MASVS-STORAGE-2",
+    "medium"
+  ],
+  "temp_file": [
+    "MASVS-STORAGE-2",
+    "low"
+  ],
+  "backup_allowed": [
+    "MASVS-STORAGE-2",
+    "medium"
+  ],
+  "world_readable": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "world_writable": [
+    "MASVS-STORAGE-1",
+    "high"
+  ],
+  "weak_crypto": [
+    "MASVS-CRYPTO-1",
+    "high"
+  ],
+  "weak_algorithm": [
+    "MASVS-CRYPTO-1",
+    "high"
+  ],
+  "ecb_mode": [
+    "MASVS-CRYPTO-1",
+    "high"
+  ],
+  "md5_hash": [
+    "MASVS-CRYPTO-1",
+    "medium"
+  ],
+  "sha1_hash": [
+    "MASVS-CRYPTO-1",
+    "medium"
+  ],
+  "des_encryption": [
+    "MASVS-CRYPTO-1",
+    "high"
+  ],
+  "weak_key_size": [
+    "MASVS-CRYPTO-2",
+    "high"
+  ],
+  "hardcoded_iv": [
+    "MASVS-CRYPTO-2",
+    "high"
+  ],
+  "random_insecure": [
+    "MASVS-CRYPTO-1",
+    "medium"
+  ],
+  "static_iv": [
+    "MASVS-CRYPTO-2",
+    "high"
+  ],
+  "weak_prng": [
+    "MASVS-CRYPTO-1",
+    "medium"
+  ],
+  "biometric_auth": [
+    "MASVS-AUTH-1",
+    "info"
+  ],
+  "custom_auth": [
+    "MASVS-AUTH-1",
+    "medium"
+  ],
+  "clear_text_traffic": [
+    "MASVS-NETWORK-1",
+    "high"
+  ],
+  "ssl_pinning": [
+    "MASVS-NETWORK-2",
+    "medium"
+  ],
+  "insecure_ssl": [
+    "MASVS-NETWORK-1",
+    "critical"
+  ],
+  "trust_all_certs": [
+    "MASVS-NETWORK-2",
+    "critical"
+  ],
+  "hostname_verifier": [
+    "MASVS-NETWORK-2",
+    "critical"
+  ],
+  "http_url": [
+    "MASVS-NETWORK-1",
+    "medium"
+  ],
+  "network_security_config": [
+    "MASVS-NETWORK-1",
+    "medium"
+  ],
+  "cleartext_permitted": [
+    "MASVS-NETWORK-1",
+    "high"
+  ],
+  "intent_filter": [
+    "MASVS-PLATFORM-1",
+    "medium"
+  ],
+  "exported_component": [
+    "MASVS-PLATFORM-1",
+    "high"
+  ],
+  "content_provider": [
+    "MASVS-PLATFORM-1",
+    "high"
+  ],
+  "broadcast_receiver": [
+    "MASVS-PLATFORM-1",
+    "medium"
+  ],
+  "webview_javascript": [
+    "MASVS-PLATFORM-2",
+    "high"
+  ],
+  "webview_file_access": [
+    "MASVS-PLATFORM-2",
+    "high"
+  ],
+  "webview_ssl_error": [
+    "MASVS-PLATFORM-2",
+    "critical"
+  ],
+  "deeplink": [
+    "MASVS-PLATFORM-1",
+    "medium"
+  ],
+  "implicit_intent": [
+    "MASVS-PLATFORM-1",
+    "medium"
+  ],
+  "pending_intent": [
+    "MASVS-PLATFORM-1",
+    "high"
+  ],
+  "sql_injection": [
+    "MASVS-CODE-1",
+    "critical"
+  ],
+  "path_traversal": [
+    "MASVS-CODE-1",
+    "high"
+  ],
+  "command_injection": [
+    "MASVS-CODE-1",
+    "critical"
+  ],
+  "xss": [
+    "MASVS-CODE-1",
+    "high"
+  ],
+  "debuggable": [
+    "MASVS-CODE-2",
+    "high"
+  ],
+  "stack_trace": [
+    "MASVS-CODE-2",
+    "low"
+  ],
+  "vulnerable_library": [
+    "MASVS-CODE-3",
+    "high"
+  ],
+  "outdated_library": [
+    "MASVS-CODE-3",
+    "medium"
+  ],
+  "native_code": [
+    "MASVS-CODE-4",
+    "info"
+  ],
+  "memory_leak": [
+    "MASVS-CODE-4",
+    "medium"
+  ],
+  "root_detection": [
+    "MASVS-RESILIENCE-2",
+    "info"
+  ],
+  "emulator_detection": [
+    "MASVS-RESILIENCE-1",
+    "info"
+  ],
+  "debugger_detection": [
+    "MASVS-RESILIENCE-1",
+    "info"
+  ],
+  "obfuscation": [
+    "MASVS-RESILIENCE-3",
+    "info"
+  ],
+  "code_signing": [
+    "MASVS-RESILIENCE-4",
+    "info"
+  ],
+  "tamper_detection": [
+    "MASVS-RESILIENCE-4",
+    "info"
+  ]
+}

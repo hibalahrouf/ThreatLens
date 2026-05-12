@@ -1,0 +1,44 @@
+%% ============================================================
+%%  CHAPITRE 1 : INTRODUCTION
+%% ============================================================
+\chapter{Introduction Générale}
+\label{chap:intro}
+
+\section{Contexte Général}
+L'essor fulgurant des technologies mobiles a transformé les smartphones en outils incontournables de la vie quotidienne. Aujourd'hui, les applications mobiles gèrent une quantité massive de données sensibles : informations personnelles, données bancaires, dossiers médicaux et identifiants de connexion. Face à cette omniprésence, la surface d'attaque s'est considérablement élargie, attirant l'attention des cybercriminels.
+
+Les failles de sécurité dans les applications mobiles peuvent avoir des conséquences désastreuses, allant de la fuite de données personnelles à des pertes financières colossales, sans oublier l'impact dévastateur sur la réputation des entreprises. Par conséquent, la sécurité mobile n'est plus une option, mais une nécessité absolue et une obligation réglementaire dans de nombreux secteurs.
+
+\section{Problématique}
+Malgré l'importance critique de la sécurité mobile, les audits de sécurité traditionnels se heurtent à plusieurs obstacles majeurs :
+
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faBug}]
+    \item \textbf{Processus chronophage :} L'analyse statique et dynamique manuelle (reverse engineering, analyse de code, tests d'intrusion) prend un temps considérable.
+    \item \textbf{Coûts élevés :} Les audits nécessitent l'intervention d'experts hautement qualifiés, ce qui engendre des coûts prohibitifs pour de nombreuses entreprises, en particulier les PME et les startups.
+    \item \textbf{Taux élevé de faux positifs :} Les outils d'analyse statique (SAST) automatisés génèrent souvent une grande quantité de faux positifs, nécessitant un tri manuel fastidieux par les analystes de sécurité.
+    \item \textbf{Complexité de conformité :} S'assurer qu'une application respecte des standards stricts comme l'OWASP MASVS (Mobile Application Security Verification Standard) requiert une cartographie complexe entre les vulnérabilités trouvées et les exigences du standard.
+\end{itemize}
+
+\section{Objectifs du Projet}
+Pour répondre à cette problématique, le projet \textbf{MASVS Audit Copilot} a été conçu. L'objectif principal est de développer une plateforme automatisée, intelligente et complète pour l'audit de sécurité des applications mobiles (Android et iOS). Les sous-objectifs sont les suivants :
+
+\begin{enumerate}[label=\textbf{\textcolor{AccentCyan}{\arabic*.}}]
+    \item \textbf{Automatisation de l'analyse statique :} Intégrer MobSF (Mobile Security Framework) pour automatiser la décompilation et l'analyse statique des fichiers APK et IPA.
+    \item \textbf{Standardisation :} Cartographier automatiquement les vulnérabilités découvertes (CWE) avec les exigences de la version 2 du standard OWASP MASVS.
+    \item \textbf{Triage intelligent (IA) :} Utiliser des modèles de langage de grande taille (LLM) exécutés localement (via Ollama) pour filtrer les faux positifs et fournir des recommandations de remédiation contextuelles, tout en garantissant la confidentialité des données.
+    \item \textbf{Analyse des dépendances :} Intégrer OSV.dev pour générer et analyser la nomenclature logicielle (SBOM) afin de détecter les vulnérabilités (CVE) dans les bibliothèques tierces.
+    \item \textbf{Rapports professionnels :} Générer des rapports d'audit détaillés sous différents formats (PDF, Markdown, SARIF) pour s'intégrer facilement dans les processus DevSecOps.
+\end{enumerate}
+
+\section{Structure du Rapport}
+Ce rapport s'articule autour des chapitres suivants :
+\begin{itemize}[label=\textcolor{PrimaryBlue}{\faChevronRight}]
+    \item \textbf{Le Chapitre \ref{chap:etat_art}} dresse un état de l'art sur la sécurité mobile, le standard OWASP MASVS et les outils d'audit existants.
+    \item \textbf{Le Chapitre \ref{chap:conception}} présente l'architecture globale de la plateforme, les diagrammes de modélisation et les choix d'architecture.
+    \item \textbf{Le Chapitre \ref{chap:technologies}} détaille les technologies et les frameworks utilisés pour le développement (FastAPI, Next.js, MobSF, Ollama, etc.).
+    \item \textbf{Le Chapitre \ref{chap:implementation}} aborde les aspects de l'implémentation, notamment le pipeline d'analyse, l'intégration de l'IA et la génération de rapports.
+    \item \textbf{Le Chapitre \ref{chap:tests}} présente les tests effectués, l'évaluation de la plateforme et les résultats obtenus.
+    \item \textbf{Le Chapitre \ref{chap:guide}} fournit un guide d'utilisation de l'interface web et de l'interface en ligne de commande (CLI).
+\end{itemize}
+
+\cleardoublepage

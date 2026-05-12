@@ -1,0 +1,574 @@
+[
+    {
+        "apk_name": "DivaApplication.apk",
+        "findings": [
+            {
+                "finding_id": "DivaApplication.apk_TP_0",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_1",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_2",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_3",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_4",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_5",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_6",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_7",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_8",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_9",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_10",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_11",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_12",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_13",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_14",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_15",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_16",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_17",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_18",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_19",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_20",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_21",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_22",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_23",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_24",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_25",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_26",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_27",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_28",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_29",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_30",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_31",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_32",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_33",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_34",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_35",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_36",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_37",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_38",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_39",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_40",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_41",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_TP_42",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_0",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_1",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_2",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_3",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_4",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_5",
+                "ai_verdict": "false_positive",
+                "ground_truth": "true_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_6",
+                "ai_verdict": "false_positive",
+                "ground_truth": "true_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_7",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_8",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_9",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_10",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_11",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_12",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_13",
+                "ai_verdict": "false_positive",
+                "ground_truth": "true_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_14",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "DivaApplication.apk_FP_15",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            }
+        ]
+    },
+    {
+        "apk_name": "InsecureBankv2.apk",
+        "findings": [
+            {
+                "finding_id": "InsecureBankv2.apk_TP_0",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_1",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_2",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_3",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_4",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_5",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_6",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_7",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_8",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_9",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_10",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_11",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "InsecureBankv2.apk_TP_12",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            }
+        ]
+    },
+    {
+        "apk_name": "UnCrackable-Level1.apk",
+        "findings": [
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_0",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_1",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_2",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_3",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_4",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "UnCrackable-Level1.apk_TP_5",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            }
+        ]
+    },
+    {
+        "apk_name": "UnCrackable-Level3.apk",
+        "findings": [
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_0",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_1",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_2",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_3",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_4",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_5",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_6",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_7",
+                "ai_verdict": "true_positive",
+                "ground_truth": "false_positive",
+                "is_correct": false
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_8",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_9",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_10",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_11",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_TP_12",
+                "ai_verdict": "true_positive",
+                "ground_truth": "true_positive",
+                "is_correct": true
+            },
+            {
+                "finding_id": "UnCrackable-Level3.apk_FP_0",
+                "ai_verdict": "false_positive",
+                "ground_truth": "false_positive",
+                "is_correct": true
+            }
+        ]
+    }
+]

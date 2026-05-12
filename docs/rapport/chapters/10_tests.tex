@@ -1,0 +1,35 @@
+%% ============================================================
+%%  CHAPITRE 6 : TESTS ET ÉVALUATION
+%% ============================================================
+\chapter{Tests et Évaluation des Performances}
+\label{chap:tests}
+
+Pour valider l'efficacité de la plateforme MASVS Audit Copilot, une série de tests a été effectuée sur des applications Android réelles et délibérément vulnérables, notamment l'application de démonstration "Snake" utilisée lors de compétitions de cybersécurité.
+
+\section{Validation Fonctionnelle du Pipeline}
+Le test initial visait à valider l'intégrité du pipeline complet : du téléversement du fichier APK jusqu'à l'exportation du rapport.
+L'orchestration via Docker et Celery s'est révélée robuste. Les fichiers APK ont été correctement décompilés par MobSF, et la communication asynchrone via Redis a permis une mise à jour en temps réel de l'interface utilisateur sans aucun blocage.
+
+\section{Évaluation du Module de Mapping MASVS}
+Le module de mapping a été testé en injectant le rapport JSON brut de MobSF. Les résultats ont démontré que le système est capable d'interpréter avec succès les descriptions de failles génériques de MobSF et de les assigner aux 7 catégories du standard MASVS v2.
+
+Par exemple, une alerte MobSF signalant l'utilisation d'algorithmes de hachage faibles (MD5) a été correctement mappée vers la catégorie \masvs{MASVS-CRYPTO}, tandis que des permissions réseau excessives ont été redirigées vers \masvs{MASVS-PLATFORM}.
+
+\section{Évaluation de l'IA (Triage et Faux Positifs)}
+Le point d'orgue de l'évaluation portait sur les performances du modèle Llama 3 (via Ollama) pour le triage des faux positifs.
+
+Dans un scénario de test, MobSF a signalé une vulnérabilité critique : "Possibilité d'injection de commandes" basée sur la présence d'une fonction \code{Runtime.getRuntime().exec()} dans le code décompilé.
+L'analyse traditionnelle aurait nécessité qu'un ingénieur inspecte manuellement le flux de données pour vérifier si les entrées de cette fonction provenaient de sources non fiables.
+
+Notre IA, nourrie du contexte et du code source par l'intermédiaire du backend, a correctement identifié que les entrées de la fonction \code{exec()} étaient codées en dur dans l'application et n'étaient pas contrôlables par un attaquant externe. Le LLM a donc qualifié cette alerte de \textbf{Faux Positif}, l'a justifié techniquement dans le rapport JSON retourné, et le système a automatiquement rétrogradé la sévérité de la faille à "INFO".
+
+\begin{tcolorbox}[successbox, title={Résultat du Triage IA}]
+L'intégration de l'IA a permis de \textbf{réduire de manière significative le "bruit" généré par l'analyse SAST}, permettant à l'auditeur de se concentrer uniquement sur les failles exploitables avérées, réduisant ainsi drastiquement le temps d'analyse post-scan.
+\end{tcolorbox}
+
+\section{Impact sur les Performances et Temps de Réponse}
+L'exécution locale d'un LLM comme Llama 3 requiert des ressources matérielles importantes (notamment en mémoire vive et en calcul GPU/CPU). Lors de nos tests, nous avons observé que le temps d'analyse d'une application augmentait proportionnellement au nombre de failles de sévérité haute/critique détectées, car chacune nécessite un appel à l'API d'Ollama.
+
+Toutefois, ce compromis est largement justifié. Le temps machine supplémentaire consommé lors de l'analyse automatisée est négligeable comparé aux heures, voire aux jours, de temps humain économisés par l'élimination des faux positifs. L'architecture asynchrone (Celery) assure que l'augmentation du temps d'analyse n'impacte pas l'expérience utilisateur sur le dashboard de la plateforme.
+
+\cleardoublepage

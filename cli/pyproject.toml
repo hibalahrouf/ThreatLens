@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "masvs-cli"
+version = "0.1.0"
+description = "CLI tool for MASVS/MASTG Audit Copilot — scan mobile apps from the terminal"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "MASVS Copilot Team"},
+]
+
+dependencies = [
+    "typer[all]>=0.12.0",
+    "rich>=13.7.0",
+    "httpx>=0.27.0",
+    "tomli>=2.0.0",
+    "websockets>=12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5.0",
+]
+
+[project.scripts]
+masvs = "masvs_cli.main:app"
+threatlens = "masvs_cli.main:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
