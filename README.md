@@ -137,8 +137,7 @@ cat benchmark/results/comparison_summary.csv
 ```
 This script runs ThreatLens on the 4 corpus APKs (Diva, InsecureBank, UnCrackable L1/L3) and calculates the alert reduction rate and scan duration reported in the paper.
 
-### Figures 1 and 2
-Architecture diagrams represent the system at commit `9c0c173`. To verify, run:
+
 ```bash
 git checkout 9c0c173
 docker compose -f infra/docker-compose.yml up --build -d
@@ -146,13 +145,13 @@ docker compose -f infra/docker-compose.yml ps
 ```
 The running services will match the architecture shown in Figure 2.
 
-### Figure 3 (CLI output)
+
 ```bash
 threatlens scan run docs/samples/UnCrackable-Level1.apk \
   --project SoftwareX-Demo --fail-on high
 ```
 
-### Figure 8 (Dashboard)
+
 Start the system and navigate to http://localhost:3000 after completing a scan.
 
 ---
