@@ -76,8 +76,8 @@ graph TD
 
 ### 2. Deployment
 ```bash
-git clone https://github.com/LaasriMahmoud/masvs_audit_copilot_app.git
-cd masvs_audit_copilot_app
+git clone https://github.com/hibalahrouf/ThreatLens.git
+cd ThreatLens
 cp .env.example .env
 docker-compose -f infra/docker-compose.yml up -d --build
 ```
